@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React from 'react';
+import TelaLogin from './src/screens/login';
+import TelaCadastro from './src/screens/cadastro';
+import TelaHome from './src/screens/home';
+import TelaPerfil from './src/screens/perfil';
+import TelaReceita from './src/screens/receita';
 
-export default function App() {
+import DrawerRoute from './src/components/routes/drawer.routes';
+
+function App(){
   return (
-    <View style={styles.container}>
-      <Text>Hello There</Text>
-      <StatusBar style="auto" />
-    </View>
+    <DrawerRoute />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
