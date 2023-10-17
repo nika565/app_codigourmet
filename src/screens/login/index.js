@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, View, Image, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import login from '../../services/api/login'
+import { storage } from "../../components/mmkv";
 
 import estilos from "./estilo";
 
@@ -31,6 +32,9 @@ function TelaLogin({ navigation }) {
 
                             if (usuarioLogado.status === 'success'){
                                 Alert.alert('Sucesso!', usuarioLogado.msg );
+
+                                // O MMKV funciona como um local storage
+                                // storage.set('chave', usuarioLogado.token);
 
                                 navigation.navigate("Home");                                
                             } else {
