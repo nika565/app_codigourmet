@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, View, Image, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 import estilos from "./estilos";
 
 function TelaCadastro( { navigation } ){
+
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
+
+
     return(
         <SafeAreaView style={estilos.tela}>
             <LinearGradient style={estilos.tela} colors={['#FFBFB1', '#FFFFFF']}>
@@ -16,7 +23,10 @@ function TelaCadastro( { navigation } ){
                     <View style={estilos.container}>
                         <Text style={estilos.titulo}>Cadastre-se</Text>
 
-                        <TextInput placeholder="Nome" style={estilos.input} />
+                        <TextInput placeholder="Nome" style={estilos.input} onChangeText={(texto) => {
+                            setNome(texto);
+                            console.log(nome);
+                        } } />
                         <TextInput placeholder="Sobrenome" style={estilos.input} />
                         <TextInput placeholder="E-mail" style={estilos.input} />
                         <TextInput placeholder="Senha" style={estilos.input} />

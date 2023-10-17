@@ -12,7 +12,7 @@ const Drawer = createDrawerNavigator();
 function DrawerRoute(){
     return(
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Login" screenOptions={ { drawerStyle: { backgroundColor: "#F85836" }, drawerItemStyle: { borderBottomWidth: 1, } } }>
+            <Drawer.Navigator initialRouteName="Login" screenOptions={ { drawerStyle: { backgroundColor: "#F85836" }, drawerItemStyle: { borderBottomWidth: 2, borderColor: "#F8836A", }, drawerActiveBackgroundColor: "#F8836A", drawerLabelStyle: { color: "#FFFFFF", fontWeight: "bold" } } }>
                 <Drawer.Screen name="Home" component={TelaHome} />
                 <Drawer.Screen name="Perfil" component={TelaPerfil} />
                 <Drawer.Screen name="Receita" component={TelaReceita} options={ { drawerItemStyle: { display: "none" } } } />
