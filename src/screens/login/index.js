@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, View, Image, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import login from '../../services/api/login'
-import { storage } from "../../components/mmkv";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import estilos from "./estilo";
 
@@ -30,16 +31,21 @@ function TelaLogin({ navigation }) {
 
                             const usuarioLogado = await login(email, senha);
 
-                            if (usuarioLogado.status === 'success'){
-                                Alert.alert('Sucesso!', usuarioLogado.msg );
-
-                                // O MMKV funciona como um local storage
-                                // storage.set('chave', usuarioLogado.token);
-
-                                navigation.navigate("Home");                                
-                            } else {
-                                Alert.alert('Ops... Algo deu errado.', usuarioLogado.msg );
-                            }
+                            async function handleAsyncStorage(){
+                                // Armazenado valor no Async storage
+                                const dadosUser = JSON.stringify([usuarioLogado.dados, usuarioLogado.token])
+                                await AsyncStorage.setItem('dados', dadosUser);
+                                
+                                if (usuarioLogado.status === 'success'){
+                                    // Feedback de que o login deu certo e enviando o usuário para a tela HOME
+                                    Alert.alert('Sucesso!', usuarioLogado.msg );
+                                    navigation.navigate("Home");                                
+                                } else {
+                                    Alert.alert('Ops... Algo deu errado.', usuarioLogado.msg );
+                                }
+                            };
+                            
+                            await handleAsyncStorage();
 
 
                         }}><Text style={estilos.txtBotao}>Entrar</Text></TouchableOpacity>
