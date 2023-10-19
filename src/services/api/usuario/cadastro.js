@@ -21,6 +21,7 @@ export default async function cadastro(nome, sobrenome, email, senha){
 
     } catch (error) {
         console.log(error);
-        return;
+        const resposta = {msg: `Algo deu errado. Tente novamente mais tarde.`, status: `error`}
+        return resposta;
     }
 }

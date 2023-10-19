@@ -1,11 +1,10 @@
-import { url, endpointUsuarios } from "../../router/rota";
+import { url, endpointReceitas } from "../../router/rota";
 
-// Função para excluir usuário
-export default async function excluirUsuario(id, token) {
-
+// Função para excluir uma receita
+export default async function excluirReceita(id, token) {
     try {
 
-        const requisicao = await fetch(`${url}${endpointUsuarios}/${id}`, {
+        const requisicao = await fetch(`${url}${endpointReceitas}/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -22,5 +21,4 @@ export default async function excluirUsuario(id, token) {
         const resposta = {msg: `Algo deu errado. Tente novamente mais tarde.`, status: `error`}
         return resposta;
     }
-
 }

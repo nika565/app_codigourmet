@@ -20,7 +20,8 @@ export default async function buscarUsuario(id, token) {
         
     } catch (error) {
         console.log(error);
-        return;
+        const resposta = {msg: `Algo deu errado. Tente novamente mais tarde.`, status: `error`}
+        return resposta;
     }
 
 } 
