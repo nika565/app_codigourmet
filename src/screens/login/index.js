@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, View, Image, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import login from '../../services/api/login'
+import login from '../../services/api/login/login'
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

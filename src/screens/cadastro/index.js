@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, View, Image, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import cadastro from "../../services/api/cadastro";
+import cadastro from "../../services/api/usuario/cadastro";
 
 import estilos from "./estilos";
 

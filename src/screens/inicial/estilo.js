@@ -59,3 +59,5 @@ const estilo = StyleSheet.create({
         fontFamily: 'Roboto'
     }
 });
+
+export default estilo;

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import estilo from './estilo.js';
 
 export default function TelaInicial(){
     return (
