@@ -50,7 +50,9 @@ function TelaLogin({ navigation }) {
 
                         }}><Text style={estilos.txtBotao}>Entrar</Text></TouchableOpacity>
 
-                        <TouchableOpacity style={estilos.link}><Text style={estilos.txtLink}>Esqueci minha senha</Text></TouchableOpacity>
+                        <TouchableOpacity style={estilos.link} onPress={async () => {
+                            navigation.navigate("EnviarEmail")
+                        }}><Text style={estilos.txtLink}>Esqueci minha senha</Text></TouchableOpacity>
 
                         <View style={estilos.divisor}>
                             <View style={estilos.linha}></View>
