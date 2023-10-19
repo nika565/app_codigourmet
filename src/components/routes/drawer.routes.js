@@ -6,18 +6,20 @@ import TelaCadastro from "../../screens/cadastro";
 import TelaHome from "../../screens/home";
 import TelaPerfil from "../../screens/perfil";
 import TelaReceita from "../../screens/receita";
+import TelaInicial from "../../screens/inicial";
 
 const Drawer = createDrawerNavigator();
 
 function DrawerRoute(){
     return(
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Login" screenOptions={ { drawerStyle: { backgroundColor: "#F85836" }, drawerItemStyle: { borderBottomWidth: 2, borderColor: "#F8836A", }, drawerActiveBackgroundColor: "#F8836A", drawerLabelStyle: { color: "#FFFFFF", fontWeight: "bold" } } }>
+            <Drawer.Navigator initialRouteName="Inicial" screenOptions={ { drawerStyle: { backgroundColor: "#F85836" }, drawerItemStyle: { borderBottomWidth: 2, borderColor: "#F8836A", }, drawerActiveBackgroundColor: "#F8836A", drawerLabelStyle: { color: "#FFFFFF", fontWeight: "bold" } } }>
                 <Drawer.Screen name="Home" component={TelaHome} />
                 <Drawer.Screen name="Perfil" component={TelaPerfil} />
                 <Drawer.Screen name="Receita" component={TelaReceita} options={ { drawerItemStyle: { display: "none" } } } />
                 <Drawer.Screen name="Cadastro" component={TelaCadastro} options={ { headerShown: false, drawerItemStyle: { display: "none" } } } />
                 <Drawer.Screen name="Login" component={TelaLogin} options={ { headerShown: false, drawerLabel: "Sair" } } />
+                <Drawer.Screen name="Inicial" component={TelaInicial} options={{ headerShown: false, drawerItemStyle: {display: "none"}}}/>
             </Drawer.Navigator>
         </NavigationContainer>
     )
