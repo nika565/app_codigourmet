@@ -6,7 +6,7 @@ export default function TelaInicial(){
     return (
         <View style={estilo.container}>
             <LinearGradient style={estilo.gradient} colors={['#F8836A', 'rgba(242, 190, 179, 0.42)']}>
-                 <Image style={estilo.inicialLogo} source={require("../../../assets/inicialLogo.png")} />
+                 <Image style={estilo.inicialLogo} source={require("../../../assets/logo/inicialLogo.png")} />
                  
                  <TouchableOpacity
                     style={estilo.botaoCadastrar}
