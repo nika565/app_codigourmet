@@ -1,12 +1,13 @@
 // Primeiro eu estou imporando a URL da API
-import { url } from "../router/rota";
+import { url, endpointUsuarios } from "../../router/rota";
 
 export default async function cadastro(nome, sobrenome, email, senha){
     // O TRY faz o código TENTAR executar
     try {
+
         const usuario = {nome, sobrenome, email, senha}
 
-        const requisicao = await fetch(`${url}/usuarios`, {
+        const requisicao = await fetch(`${url}${endpointUsuarios}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -17,7 +18,9 @@ export default async function cadastro(nome, sobrenome, email, senha){
         const resposta = await requisicao.json();
 
         return resposta;
+
     } catch (error) {
         console.log(error);
+        return;
     }
 }

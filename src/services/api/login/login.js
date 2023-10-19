@@ -1,4 +1,4 @@
-import { url } from "../router/rota";
+import { url } from "../../router/rota";
 
 export default async function login(email, senha){
 
