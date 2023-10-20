@@ -12,15 +12,15 @@ function TelaEnviarEmail({ navigation }) {
 
 
     return (
-        <SafeAreaView style={estilos.tela}>
-            <LinearGradient style={estilos.tela} colors={['#FFBFB1', '#FFFFFF']}>
-                <ScrollView style={estilos.tela}>
+            <SafeAreaView style={estilos.tela}>
+                <View style={estilos.tela}>
+                   <LinearGradient style={estilos.tela} colors={['#FFBFB1', '#FFFFFF']}>
                     <View style={estilos.appbarLogin}>
                         <Image style={estilos.navbarLogo} source={require("../../../assets/logo/navbarLogo.png")} />
                     </View>
-
                     <View style={estilos.container}>
-                       
+                        <Text style={estilos.texto}>Esqueceu a senha?</Text>
+                        <Text style={estilos.textoEnunciado}>Digite o e-mail da conta que deseja recuperar sua senha</Text>
 
                         <TextInput placeholder="E-mail" style={estilos.input} onChangeText={(texto) => setEmail(texto)} />
         
@@ -35,17 +35,18 @@ function TelaEnviarEmail({ navigation }) {
                             }
 
 
-                        }}><Text style={estilos.txtBotao}>Enviar email</Text></TouchableOpacity>
-
-                        
-
-                
-
-                        
+                        }}><Text style={estilos.txtBotao}>Enviar e-mail</Text></TouchableOpacity>
+                        <TouchableOpacity 
+                            style={estilos.link}
+                            onPress={() => {navigation.navigate("Login")}}>
+                            <Text style={estilos.link}>Voltar</Text>
+                        </TouchableOpacity>
                     </View>
-                </ScrollView>
-            </LinearGradient>
+                    </LinearGradient> 
+                </View>
+            
         </SafeAreaView>
+        
     )
 }
 
