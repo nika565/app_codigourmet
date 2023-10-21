@@ -1,7 +1,7 @@
 import { url, endpointReceitas } from "../../router/rota";
 
 // Função para criar receitas
-export default async function criarReceita(nome, idCriador, ingredientes, modoPreparo, tempo) {
+export default async function criarReceita(token, nome, idCriador, ingredientes, modoPreparo, tempo) {
 
     try {
 
