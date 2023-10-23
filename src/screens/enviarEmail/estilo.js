@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
+
 
 const estilos = StyleSheet.create({
     tela:{
@@ -17,61 +18,72 @@ const estilos = StyleSheet.create({
         height: 30,
     },
 
-    container:{
+    container: {
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 100,
     },
 
-    txt:{
+    texto: {
+        color: '#FF2D00',
         fontFamily: 'Roboto',
         fontSize: 26,
-        color: '#FF2D00',
         fontWeight: 'bold',
+        marginTop: 100,
     },
 
-    txtEnunciado:{
-        fontFamily: 'Roboto',
-        fontSize: 15,
+    textoEnunciado: {
         color: '#FF2D00',
-        padding: 10,
+        fontFamily: 'Roboto',
+        fontSize: 12,
+        fontWeight: 'bold',
+        marginTop: 40,
     },
 
-    input:{
+    input: {
         width: 280,
         height: 40,
-        
+
         borderRadius: 20,
         borderWidth: 2,
         borderColor: '#FF2D00',
         backgroundColor: '#FFF',
 
-        padding: 10,
         marginTop: 20,
+        padding: 10,
     },
 
-    botao:{
+    botao: {
         width: 280,
         height: 45,
-        
+
         borderRadius: 20,
         borderWidth: 2,
         borderColor: '#FF2D00',
         backgroundColor: '#FF2D00',
 
         marginTop: 20,
-        alignItems: 'center',
+        padding: 10,
     },
 
     txtBotao:{
+        color: '#FFF',
+        fontWeight: 'bold',
         fontFamily: 'Roboto',
         fontSize: 15,
-        fontWeight: 'bold',
-        color: '#FFF',
-        marginTop: 12,
-        
+        textAlign: 'center',
+        alignSelf: 'center',
+        marginTop: 1,
     },
 
+    link: {
+        color: '#F9441E',
+        fontFamily: 'Roboto',
+        fontWeight: 'bold',
+        fontSize: 15,
+        marginTop: 10,
+    }
+    
 });
 
 export default estilos;

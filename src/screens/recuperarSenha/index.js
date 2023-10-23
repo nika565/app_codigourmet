@@ -1,53 +1,66 @@
-import React, { useState } from "react";
-import { ScrollView, SafeAreaView, Text, TextInput, TouchableOpacity, View, Image, Alert } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import { enviarEmail } from "../../services/api/recuperarSenha/recuperarSenha";
+import React, {useState} from 'react';
+import { SafeAreaView, ScrollView, TouchableOpacity, View, Text, TextInput, Image, Alert, Modal, Pressable } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { recuperarSenha } from '../../services/api/recuperarSenha/recuperarSenha';
 
 import estilos from "./estilo";
 
-function TelaEnviarEmail({ navigation }) {
+function TelaRecuperarSenha ({ navigation }){
 
-    // Variáveis de login
-    const [email, setEmail] = useState('renato@email.com');
+    const [senha, setSenha] = useState('');
+    const [confirmar, setConfirmar] = useState('');
+    const [codigo, setCodigo] = useState('');
 
-
-    return (
-            <SafeAreaView style={estilos.tela}>
-                <View style={estilos.tela}>
-                   <LinearGradient style={estilos.tela} colors={['#FFBFB1', '#FFFFFF']}>
+    return(
+        <SafeAreaView style={estilos.tela}>
+                <LinearGradient style={estilos.tela} colors={['#FFBFB1', '#FFFFFF']}>
+                <ScrollView style={estilos.tela}>
                     <View style={estilos.appbarLogin}>
-                        <Image style={estilos.navbarLogo} source={require("../../../assets/logo/navbarLogo.png")} />
+                        <Image style={estilos.navbarLogo} source={require("../../../assets/logo/navbarLogo.png")}></Image>
                     </View>
                     <View style={estilos.container}>
-                        <Text style={estilos.texto}>Esqueceu a senha?</Text>
-                        <Text style={estilos.textoEnunciado}>Digite o e-mail da conta que deseja recuperar sua senha</Text>
+                        <Text style={estilos.txt}>Recuperar Senha</Text>
+                        <Text style={estilos.txtEnunciado}>Digite o código enviado por e-mail</Text>
+                        <TextInput placeholder="Código" style={estilos.input} onChangeText={(texto) => setCodigo(texto)}/>
+                        <TextInput placeholder="Digite a nova senha" style={estilos.input} onChangeText={(texto) => setSenha(texto)}/>
+                        <TextInput placeholder="Confirmar nova senha" style={estilos.input} onChangeText={(texto) => setConfirmar(texto)}/>
 
-                        <TextInput placeholder="E-mail" style={estilos.input} onChangeText={(texto) => setEmail(texto)} />
-        
-                        <TouchableOpacity style={estilos.botao} onPress={async () => {
+                        <TouchableOpacity
+                            style={estilos.botao} onPress={async() => {
+                                
+                                if( senha !== confirmar) {
+                                    Alert.alert("Senhas não conferem");
+                                    return;
+                                }
+                                
+                                const resposta = await recuperarSenha(codigo, senha);
 
-                            const resposta = await enviarEmail(email);
+                                if (resposta.status === 'error') {
+                                    Alert.alert("Algo deu errado")
+                                } else {
+                                    Alert.alert("Senha salva com sucesso!");
+                                }
+                            }}>
+                            <Text style={estilos.txtBotao}>Salvar</Text>
+                        </TouchableOpacity>
+                        
 
-                            if (resposta.status === 'error') {
-                                Alert.alert("Algo deu errado")
-                            } else {
-                                Alert.alert("E-mail enviado com sucesso!");
-                            }
-
-
-                        }}><Text style={estilos.txtBotao}>Enviar e-mail</Text></TouchableOpacity>
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={estilos.link}
-                            onPress={() => {navigation.navigate("Login")}}>
+                            onPress={() => (navigation.navigate("EnviarEmail"))}>
                             <Text style={estilos.link}>Voltar</Text>
                         </TouchableOpacity>
                     </View>
-                    </LinearGradient> 
-                </View>
-            
+                </ScrollView>
+                </LinearGradient>
         </SafeAreaView>
-        
-    )
-}
+    );
+};
 
-export default TelaEnviarEmail;
+export default TelaRecuperarSenha;
+
+
+
+
+
+
