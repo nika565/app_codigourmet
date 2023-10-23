@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { ScrollView, Text } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// import autenticar from "../../services/api/autenticar";
-
 function TelaHome(){
     // Criando uma variável para armazenar o objeto/array que virá no Async Storage
     const [usuario, setUsuario] = useState(''); 
@@ -17,12 +15,6 @@ function TelaHome(){
     };
 
     getData();
-
-    // const verificado = autenticar(usuario[1])
-
-    // if(verificado == 1){
-    //     console.log('foi');
-    // };
 
     return(
         <ScrollView>
