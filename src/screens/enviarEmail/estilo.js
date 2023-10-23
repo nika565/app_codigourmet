@@ -10,7 +10,7 @@ const estilos = StyleSheet.create({
     appbarLogin:{
         width: "100%",
         alignItems: "flex-end",
-        marginTop: 30,
+        marginTop: 40,
     },
 
     navbarLogo:{
@@ -55,7 +55,7 @@ const estilos = StyleSheet.create({
 
     botao: {
         width: 280,
-        height: 40,
+        height: 45,
 
         borderRadius: 20,
         borderWidth: 2,
@@ -73,7 +73,7 @@ const estilos = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         alignSelf: 'center',
-        marginTop: -1,
+        marginTop: 1,
     },
 
     link: {

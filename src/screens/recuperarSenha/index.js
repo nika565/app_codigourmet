@@ -13,17 +13,17 @@ function TelaRecuperarSenha ({ navigation }){
 
     return(
         <SafeAreaView style={estilos.tela}>
-            <ScrollView style={estilos.tela}>
                 <LinearGradient style={estilos.tela} colors={['#FFBFB1', '#FFFFFF']}>
+                <ScrollView style={estilos.tela}>
                     <View style={estilos.appbarLogin}>
                         <Image style={estilos.navbarLogo} source={require("../../../assets/logo/navbarLogo.png")}></Image>
                     </View>
-                    <View style={estilos.tela}>
+                    <View style={estilos.container}>
                         <Text style={estilos.txt}>Recuperar Senha</Text>
                         <Text style={estilos.txtEnunciado}>Digite o código enviado por e-mail</Text>
-                        <TextInput placeholder="Código" style={estilos.input} onChangeText={(texto) => setCodigo(texto)} value={texto}/>
-                        <TextInput placeholder="Digite a nova senha" style={estilos.input} onChangeText={(texto) => setSenha(texto)} value={texto}/>
-                        <TextInput placeholder="Confirmar nova senha" style={estilos.input} onChangeText={(texto) => setConfirmar(texto)} value={texto}/>
+                        <TextInput placeholder="Código" style={estilos.input} onChangeText={(texto) => setCodigo(texto)}/>
+                        <TextInput placeholder="Digite a nova senha" style={estilos.input} onChangeText={(texto) => setSenha(texto)}/>
+                        <TextInput placeholder="Confirmar nova senha" style={estilos.input} onChangeText={(texto) => setConfirmar(texto)}/>
 
                         <TouchableOpacity
                             style={estilos.botao} onPress={async() => {
@@ -51,8 +51,8 @@ function TelaRecuperarSenha ({ navigation }){
                             <Text style={estilos.link}>Voltar</Text>
                         </TouchableOpacity>
                     </View>
+                </ScrollView>
                 </LinearGradient>
-            </ScrollView>
         </SafeAreaView>
     );
 };
