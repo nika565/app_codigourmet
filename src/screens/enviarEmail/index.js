@@ -32,6 +32,7 @@ function TelaEnviarEmail({ navigation }) {
                                 Alert.alert("Algo deu errado")
                             } else {
                                 Alert.alert("E-mail enviado com sucesso!");
+                                navigation.navigate("RecuperarSenha");
                             }
 
 

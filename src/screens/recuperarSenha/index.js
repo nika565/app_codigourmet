@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import { SafeAreaView, ScrollView, TouchableOpacity, View, Text, TextInput, Image, Alert, Modal, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { recuperarSenha } from '../../services/api/recuperarSenha/recuperarSenha';
 
-import estilo from "./estilos";
+import estilos from "./estilo";
 
 function TelaRecuperarSenha ({ navigation }){
 
-    const [modalVisivel, setModalVisivel] = useState(false);
+    const [senha, setSenha] = useState('');
+    const [confirmar, setConfirmar] = useState('');
+    const [codigo, setCodigo] = useState('');
 
     return(
         <SafeAreaView style={estilos.tela}>
@@ -18,35 +21,29 @@ function TelaRecuperarSenha ({ navigation }){
                     <View style={estilos.tela}>
                         <Text style={estilos.txt}>Recuperar Senha</Text>
                         <Text style={estilos.txtEnunciado}>Digite o código enviado por e-mail</Text>
-                        <TextInput placeholder="Código" style={estilos.input} onChangeText={texto} value={texto}/>
-                        <TextInput placeholder="Digite a nova senha" style={estilos.input} onChangeText={texto} value={texto}/>
-                        <TextInput placeholder="Confirmar nova senha" style={estilos.input} onChangeText={texto} value={texto}/>
+                        <TextInput placeholder="Código" style={estilos.input} onChangeText={(texto) => setCodigo(texto)} value={texto}/>
+                        <TextInput placeholder="Digite a nova senha" style={estilos.input} onChangeText={(texto) => setSenha(texto)} value={texto}/>
+                        <TextInput placeholder="Confirmar nova senha" style={estilos.input} onChangeText={(texto) => setConfirmar(texto)} value={texto}/>
 
-                        <Modal
-                            animationType='slide'
-                            transparent={true}
-                            visible={modalVisivel}
-                            onRequestClose={() => {
-                                Alert.alert('Modal fechado');
-                                setModalVisivel(!modalVisivel);
+                        <TouchableOpacity
+                            style={estilos.botao} onPress={async() => {
+                                
+                                if( senha !== confirmar) {
+                                    Alert.alert("Senhas não conferem");
+                                    return;
+                                }
+                                
+                                const resposta = await recuperarSenha(codigo, senha);
+
+                                if (resposta.status === 'error') {
+                                    Alert.alert("Algo deu errado")
+                                } else {
+                                    Alert.alert("Senha salva com sucesso!");
+                                }
                             }}>
-                            
-                            <View style={estilos.modalCentralizado}>
-                                <View style={modalView}>
-                                    <Text style={estilos.txtModal}>Senha salva com sucesso!</Text>
-                                    <Pressable 
-                                        style={[estilos.botao, estilos.fechaBotao]}
-                                        onPress={() => setModalVisivel(!modalVisivel)}>
-                                        <Text style={estilos.txtBotao}>Fechar</Text>
-                                    </Pressable>
-                                </View>
-                            </View>
-                        </Modal>
-                        <Pressable 
-                            style={[estilos.botao, estilos.abreBotao]}
-                            onPress={() => setModalVisivel(true)}>
                             <Text style={estilos.txtBotao}>Salvar</Text>
-                        </Pressable>
+                        </TouchableOpacity>
+                        
 
                         <TouchableOpacity
                             style={estilos.link}
@@ -61,3 +58,9 @@ function TelaRecuperarSenha ({ navigation }){
 };
 
 export default TelaRecuperarSenha;
+
+
+
+
+
+
