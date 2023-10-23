@@ -61,7 +61,7 @@ const estilos = StyleSheet.create({
         borderColor: '#FF2D00',
         backgroundColor: '#FF2D00',
 
-        marginTop: 10,
+        marginTop: 20,
         padding: 10,
     },
 
@@ -72,7 +72,7 @@ const estilos = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         alignSelf: 'center',
-        marginTop: -2,
+        marginTop: -1,
     },
 
     link: {
@@ -80,7 +80,7 @@ const estilos = StyleSheet.create({
         fontFamily: 'Roboto',
         fontWeight: 'bold',
         fontSize: 15,
-        marginTop: 5,
+        marginTop: 10,
     }
     
 });
