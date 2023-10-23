@@ -17,3 +17,5 @@ const estilos = StyleSheet.create({
         height: 30,
     },
 });
+
+export default estilos;

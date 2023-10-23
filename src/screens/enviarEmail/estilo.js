@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 
+
 const estilos = StyleSheet.create({
     tela:{
         width: '100%',
