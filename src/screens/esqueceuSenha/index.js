@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SafeAreaView, Text, TextInput, TouchableOpacity, View, Image, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { enviarEmail } from "../../services/api/recuperarSenha/recuperarSenha";
+import { enviarEmail } from "../../services/api/recuperarSenha/esqueceuSenha";
 
 import estilos from "./estilo";
 
