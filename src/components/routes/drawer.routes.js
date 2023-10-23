@@ -7,7 +7,7 @@ import TelaHome from "../../screens/home";
 import TelaPerfil from "../../screens/perfil";
 import TelaReceita from "../../screens/receita";
 import TelaInicial from "../../screens/inicial";
-import TelaEnviarEmail from "../../screens/recuperarSenha";
+import TelaEnviarEmail from "../../screens/esqueceuSenha";
 
 const Drawer = createDrawerNavigator();
 
