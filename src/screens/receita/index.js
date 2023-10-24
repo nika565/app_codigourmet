@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { ScrollView, SafeAreaView, View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
-import { receitas } from '../../services/api/receitas/criarReceita'; 
+
 
 import estilos from './estilo';
 
@@ -16,7 +16,7 @@ function TelaReceita( {navigation} ){
             <ScrollView style={estilos.tela}>
                 <View style={estilos.container}>
                     <Text style={estilos.txt}>Título</Text>
-                    <TextInput style={estilos.input1} onChangeText={(texto) => {setTitulo(texto)}}/>
+                    <TextInput style={estilos.input1} onChangeText={(texto) => {setTitulo(texto)}}TextInput></TextInput>
 
                     <Text style={estilos.txt}>Ingredientes</Text>
                     <TextInput style={estilos.input2} onChangeText={(texto) => {setIngredientes(texto)}}/>
@@ -24,7 +24,7 @@ function TelaReceita( {navigation} ){
                     <Text style={estilos.txt}>Modo de preparo</Text>
                     <TextInput style={estilos.input2} onChangeText={(texto) => {setPreparo(texto)}}/>
 
-                    <Text style={estilos.txt}>Tempo de preparo (minutos)</Text>
+                    <Text style={estilos.txt}>Tempo de preparo - minutos</Text>
                     <TextInput style={estilos.input1} onChangeText={(texto) => {setTempo(texto)}} keyboardType="numeric"/>
 
                     <TouchableOpacity style={estilos.botao} onPress={ async () => {
