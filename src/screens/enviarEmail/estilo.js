@@ -42,7 +42,7 @@ const estilos = StyleSheet.create({
 
     input: {
         width: 280,
-        height: 40,
+        height: 45,
 
         borderRadius: 20,
         borderWidth: 2,

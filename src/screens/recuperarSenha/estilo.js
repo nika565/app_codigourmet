@@ -39,7 +39,7 @@ const estilos = StyleSheet.create({
 
     input:{
         width: 280,
-        height: 40,
+        height: 45,
         
         borderRadius: 20,
         borderWidth: 2,
@@ -69,8 +69,15 @@ const estilos = StyleSheet.create({
         fontWeight: 'bold',
         color: '#FFF',
         marginTop: 12,
-        
     },
+
+    link:{
+        fontFamily: 'Roboto',
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: '#F9441E',
+        marginTop: 10,
+    }
 
 });
 
