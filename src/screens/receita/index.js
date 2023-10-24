@@ -16,7 +16,7 @@ function TelaReceita( {navigation} ){
             <ScrollView style={estilos.tela}>
                 <View style={estilos.container}>
                     <Text style={estilos.txt}>Título</Text>
-                    <TextInput style={estilos.input} onChangeText={(texto) => {setTitulo(texto)}}TextInput></TextInput>
+                    <TextInput style={estilos.input} onChangeText={(texto) => {setTitulo(texto)}}/>
 
                     <Text style={estilos.txt}>Ingredientes</Text>
                     <TextInput style={estilos.input} onChangeText={(texto) => {setIngredientes(texto)}}/>
