@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { SafeAreaView, ScrollView, TouchableOpacity, View, Text, TextInput, Image, Alert, Modal, Pressable } from 'react-native';
+import { SafeAreaView, ScrollView, TouchableOpacity, View, Text, TextInput, Image, Alert } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { recuperarSenha } from '../../services/api/recuperarSenha/recuperarSenha';
 
@@ -47,7 +47,7 @@ function TelaRecuperarSenha ({ navigation }){
 
                         <TouchableOpacity
                             style={estilos.link}
-                            onPress={() => (navigation.navigate("EnviarEmail"))}>
+                            onPress={() => (navigation.navigate("Login"))}>
                             <Text style={estilos.link}>Voltar</Text>
                         </TouchableOpacity>
                     </View>
