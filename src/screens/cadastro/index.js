@@ -33,7 +33,7 @@ function TelaCadastro( { navigation } ){
                         <TextInput placeholder="E-mail" style={estilos.input} onChangeText={(texto) => {
                             setEmail(texto);
                         }} />
-                        <TextInput placeholder="Senha" style={estilos.input} onChangeText={(texto) => {
+                        <TextInput placeholder="Senha" style={estilos.input} secureTextEntry={true} onChangeText={(texto) => {
                             setSenha(texto);
                         }} />
 

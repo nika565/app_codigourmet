@@ -26,7 +26,7 @@ function TelaLogin({ navigation }) {
                         <Text style={estilos.titulo}>Login</Text>
 
                         <TextInput placeholder="E-mail" style={estilos.input} onChangeText={(texto) => setEmail(texto)} />
-                        <TextInput placeholder="Senha" style={estilos.input} onChangeText={(texto) => setSenha(texto)} />
+                        <TextInput placeholder="Senha" style={estilos.input} secureTextEntry={true} onChangeText={(texto) => setSenha(texto)} />
                         <TouchableOpacity style={estilos.botao} onPress={async () => {
 
                             const usuarioLogado = await login(email, senha);
