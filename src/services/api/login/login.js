@@ -19,7 +19,7 @@ export default async function login(email, senha){
 
         const resposta = await requisicao.json();
 
-        console.log(resposta);
+        // console.log(resposta);
 
         return resposta;
         
