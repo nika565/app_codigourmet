@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator();
 function DrawerRoute(){
     return(
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Inicial" screenOptions={ { drawerStyle: { backgroundColor: "#F85836" }, drawerItemStyle: { borderBottomWidth: 2, borderColor: "#F8836A", }, drawerActiveBackgroundColor: "#F8836A", drawerLabelStyle: { color: "#FFFFFF", fontWeight: "bold" } } }>
+            <Drawer.Navigator initialRouteName="Inicial" screenOptions={ {title: "", drawerStyle: { backgroundColor: "#F85836" }, drawerItemStyle: { borderBottomWidth: 2, borderColor: "#F8836A" }, headerTransparent: true, drawerActiveBackgroundColor: "#F8836A", drawerLabelStyle: { color: "#FFFFFF", fontWeight: "bold" } } }>
                 <Drawer.Screen name="Home" component={TelaHome} />
                 <Drawer.Screen name="Perfil" component={TelaPerfil} />
                 <Drawer.Screen name="Receita" component={TelaCriarReceita}/> 
