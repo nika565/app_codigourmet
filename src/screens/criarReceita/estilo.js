@@ -17,10 +17,17 @@ const estilos = StyleSheet.create({
         height: 30,
     },
 
+    tela:{
+        width: '100%',
+        height:'100%',
+        backgroundColor: '#F8836A',
+    },
+
     container:{
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 100,
+        backgroundColor: '#F8836A',
     },
 });
 
