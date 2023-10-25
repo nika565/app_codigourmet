@@ -5,7 +5,7 @@ export default async function pesquisa(nomeReceita, token) {
     try {
 
         const requisicao = await fetch(`${url}${endpointReceitas}?nome=${nomeReceita}`, {
-            method: "POST",
+            method: "GET",
             headers: {
                 'Content-Type': 'application/json',
                 'authorization': `Bearer ${token}`
