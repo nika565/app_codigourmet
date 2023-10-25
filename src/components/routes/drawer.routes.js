@@ -10,6 +10,7 @@ import TelaInicial from "../../screens/inicial";
 import TelaEnviarEmail from "../../screens/enviarEmail";
 import TelaRecuperarSenha from "../../screens/recuperarSenha";
 import TelaCriarReceita from "../../screens/criarReceita";
+import TelaMinhasReceitas from "../../screens/minhasReceitas";
 
 const Drawer = createDrawerNavigator();
 
@@ -26,6 +27,7 @@ function DrawerRoute(){
                 <Drawer.Screen name="EnviarEmail" component={TelaEnviarEmail} options={{ headerShown: false, drawerItemStyle: {display: "none"}}}/>
                 <Drawer.Screen name="RecuperarSenha" component={TelaRecuperarSenha} options={{ headerShown: false, drawerItemStyle: {display: "none"}}}/>
                 <Drawer.Screen name="CriarReceita" component={TelaCriarReceita} options={{ headerShown: false, drawerItemStyle: {display: "none"}}}/>
+                <Drawer.Screen name="MinhasReceitas" component={TelaMinhasReceitas}/> 
             </Drawer.Navigator>
         </NavigationContainer>
     )
