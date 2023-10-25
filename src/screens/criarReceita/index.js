@@ -54,7 +54,7 @@ function TelaReceita( {navigation} ){
                 </View>
             </ScrollView>
         </SafeAreaView>
-    )
-}
+    );
+};
 
 export default TelaReceita;
