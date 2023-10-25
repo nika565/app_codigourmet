@@ -1,19 +1,18 @@
 import { url, endpointReceitas } from "../../router/rota";
 
-// Função para buscar um receita específica
-export default async function buscarReceitas(id, token) {
+export default async function pesquisa(nomeReceita, token) {
 
     try {
 
-        const requisicao = await fetch(`${url}${endpointReceitas}/${id}`, {
-            method: 'GET',
+        const requisicao = await fetch(`${url}${endpointReceitas}?nome=${nomeReceita}`, {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 'authorization': `Bearer ${token}`
             }
         });
 
-        const resposta = requisicao.json();
+        const resposta = await requisicao.json();
 
         return resposta;
         
