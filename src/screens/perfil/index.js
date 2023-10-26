@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { ScrollView, Text, SafeAreaView, View, TextInput, TouchableOpacity, Image, Alert } from "react-native";
 import { estilos } from "./estilos";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { enviarEmail } from "../../services/api/recuperarSenha/recuperarSenha";
+import excluirUsuario from "../../services/api/usuario/excluirUsuario";
 
 function TelaPerfil({ navigation }) {
+
   const [dados, setDados] = useState(null);
 
   useEffect(() => {
@@ -16,6 +19,8 @@ function TelaPerfil({ navigation }) {
 
     getData();
   }, []);
+
+  console.log(dados[0].id)
 
   return (
     <SafeAreaView style={estilos.tela}>
@@ -47,9 +52,23 @@ function TelaPerfil({ navigation }) {
             </View>
           )}
 
-          <TouchableOpacity style={estilos.botao}>
+          <TouchableOpacity style={estilos.botao} onPress={async () => {
+
+            const resposta = await enviarEmail(dados[0].email);
+
+            if (resposta.status === 'success') {
+
+              Alert.alert(resposta.msg);
+              navigation.navigate('RecuperarSenha');
+
+            } else {
+              Alert.alert(resposta.msg);
+            }
+
+          }}>
             <Text style={estilos.txtBotao}>Alterar senha</Text>
           </TouchableOpacity>
+
           <TouchableOpacity style={estilos.botao} onPress={() => {
             Alert.alert('Cuidado!', 'Você está prestes a excluir sua conta. Essa ação não pode ser revertida!', [
               {
@@ -58,8 +77,17 @@ function TelaPerfil({ navigation }) {
 
               {
                 text: "Estou ciente!",
-                onPress: () => {
-                  excluirUsuario(dados[0]['id'], dados[1])
+                onPress: async () => {
+
+                  const resposta = await excluirUsuario(dados[0].id, dados[1]);
+
+                  if (resposta.status === 'success') {
+                    Alert.alert(resposta.msg);
+                    navigation.navigate('Inicial')
+                  } else {
+                    Alert.alert(resposta.msg);
+                  }
+
                 },
                 style: "cancel"
               }

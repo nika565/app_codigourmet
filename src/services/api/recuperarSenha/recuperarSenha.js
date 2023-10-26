@@ -10,7 +10,7 @@ export async function enviarEmail(email) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({email})
+            body: JSON.stringify({email: email})
         });
 
         const resposta = await requisicao.json();

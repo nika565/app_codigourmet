@@ -8,7 +8,7 @@ import estilos from "./estilo";
 function TelaEnviarEmail({ navigation }) {
 
     // Variáveis de login
-    const [email, setEmail] = useState('renato@email.com');
+    const [email, setEmail] = useState('');
 
 
     return (
@@ -30,7 +30,7 @@ function TelaEnviarEmail({ navigation }) {
                                 const resposta = await enviarEmail(email);
 
                                 if (resposta.status === 'error') {
-                                    Alert.alert("Algo deu errado")
+                                    Alert.alert(resposta.msg)
                                 } else {
                                     Alert.alert("E-mail enviado com sucesso!");
                                     navigation.navigate("RecuperarSenha");

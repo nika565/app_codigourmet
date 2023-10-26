@@ -10,8 +10,8 @@ import estilos from "./estilo";
 function TelaLogin({ navigation }) {
 
     // Variáveis de login
-    const [email, setEmail] = useState('renato@email.com');
-    const [senha, setSenha] = useState('renatin123');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
 
 
     return (
