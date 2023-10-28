@@ -1,15 +1,30 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { ScrollView, SafeAreaView, View, Text, TextInput, TouchableOpacity, Alert, Image } from "react-native";
 import criarReceita from "../../services/api/receitas/criarReceita";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import estilos from './estilo';
 
 function TelaReceita( {navigation} ){
 
+    const [usuario, setUsuario] = useState('');
     const [titulo, setTitulo] = useState('');
     const [ingredientes, setIngredientes] = useState('');
     const [preparo, setPreparo] = useState('');
     const [tempo, setTempo] = useState('');
+
+    useEffect(() => {
+        // Função para coletar o objeto/array no Async Storage
+        async function getData() {
+            const resposta = await AsyncStorage.getItem('dados');
+            const objeto = resposta != null ? JSON.parse(resposta) : null;
+
+            setUsuario(objeto);
+        };
+
+        getData();
+    }, []);
+
 
     return(
         <SafeAreaView style={estilos.SafeAreaView}>
@@ -32,7 +47,8 @@ function TelaReceita( {navigation} ){
                     <TextInput style={estilos.input1} onChangeText={(texto) => setTempo(texto)} keyboardType="numeric"/>
 
                     <TouchableOpacity style={estilos.botao} onPress={ async () => {
-                        const receita = await criarReceita(titulo, ingredientes, preparo, tempo);
+                        console.log(titulo);
+                        const receita = await criarReceita(usuario[1], titulo, usuario[0].id, ingredientes, preparo, tempo);
 
                         if(receita.status === 'success'){
                             Alert.alert('', receita.msg);

@@ -11,7 +11,7 @@ export default async function criarReceita(token, nome, idCriador, ingredientes,
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'authorizathion': `Bearer ${token}`
+                'authorization': `Bearer ${token}`
             },
             body: JSON.stringify(receita)
         });
