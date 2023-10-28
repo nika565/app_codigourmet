@@ -40,6 +40,13 @@ function TelaHome() {
 
                     }} ><Image style={estilos.imgBusca} source={require('../../../assets/icons/search.png')} /></TouchableOpacity>
                 </View>
+
+                {/* <View style={estilos.teste}></View>
+
+                <TouchableOpacity style={estilos.addReceita}>
+                    <Image source={require('../../../assets/icons/add.png')}/>
+                </TouchableOpacity> */}
+
             </ScrollView>
         </SafeAreaView>
     )

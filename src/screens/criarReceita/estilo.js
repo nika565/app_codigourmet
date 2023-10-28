@@ -25,9 +25,9 @@ const estilos = StyleSheet.create({
 
     container:{
         justifyContent: 'center',
-        alignItems: 'flex-start',
+        alignSelf: 'center',
         backgroundColor: '#F8836A',
-        padding: 45,
+        width: "80%",
     },
 
     txt:{
@@ -35,11 +35,13 @@ const estilos = StyleSheet.create({
         fontSize: 17,
         fontWeight: 'bold',
         color: '#FFF',
-        padding: 5,
+        marginLeft: 15,
+        marginTop: 20,
+
     },
 
     input1:{
-      width: 323,
+      width: "100%",
       height: 40,
 
       borderRadius: 20,
@@ -52,7 +54,7 @@ const estilos = StyleSheet.create({
     },
 
     input2:{
-        width: 323,
+        width: "100%",
         height: 170,
   
         borderRadius: 20,
@@ -65,7 +67,7 @@ const estilos = StyleSheet.create({
       },
 
       botao:{
-        width: 323,
+        width: "100%",
         height: 40,
 
         borderRadius: 20,
@@ -95,7 +97,7 @@ const estilos = StyleSheet.create({
         fontSize: 17,
         fontWeight: 'bold',
         color: '#552C23',
-        marginTop: -10,
+        margin: 10,
       }
 });
 

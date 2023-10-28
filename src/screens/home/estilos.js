@@ -49,5 +49,21 @@ export const estilos = StyleSheet.create({
         height: 30,
 
         marginRight: 5,
-    }
+    },
+
+    // addReceita:{
+    //     backgroundColor: "#F9441E",
+    //     width: 70,
+    //     height: 70,
+    //     alignItems: "center",
+    //     borderRadius: 40,
+    //     position: "fixed",
+    //     bottom: 0,
+    //     right: 0,
+    //     zIndex: 1,
+    // },
+
+    // teste:{
+    //     height: 2000,
+    // }
 })
