@@ -7,20 +7,18 @@ import excluirUsuario from "../../services/api/usuario/excluirUsuario";
 
 function TelaPerfil({ navigation }) {
 
-  const [dados, setDados] = useState(null);
+  const [dados, setDados] = useState('');
 
   useEffect(() => {
     async function getData() {
       const resposta = await AsyncStorage.getItem('dados');
-      const objeto = resposta != null ? JSON.parse(resposta) : null;
+      const objeto = resposta != null ? JSON.parse(resposta) : '';
 
       setDados(objeto);
     }
 
     getData();
   }, []);
-
-  console.log(dados[0].id)
 
   return (
     <SafeAreaView style={estilos.tela}>
