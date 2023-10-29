@@ -24,7 +24,7 @@ function TelaHome() {
         }
 
         getData();
-    }, []);
+    }, [carregando]);
 
     return (
         <View style={[estilos.cor, estilos.tela]}>
