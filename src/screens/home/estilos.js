@@ -49,5 +49,26 @@ export const estilos = StyleSheet.create({
         height: 30,
 
         marginRight: 5,
-    }
+    },
+
+    lista: {
+        flex: 1
+    },
+
+    card: {
+        padding: 20,
+        flex: 1,
+        width: '90%',
+        backgroundColor: '#F9441E',
+        marginTop: 30,
+        alignSelf: 'center',
+        borderRadius: 10
+    },
+
+    titulo: {
+        alignSelf: 'center',
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: 'white'
+    },
 })
