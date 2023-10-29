@@ -17,6 +17,7 @@ export const estilos = StyleSheet.create({
         alignSelf: "center",
         
         marginTop: 100,
+        marginBottom: 20,
     },
 
     busca:{
@@ -55,20 +56,45 @@ export const estilos = StyleSheet.create({
         flex: 1
     },
 
-    card: {
-        padding: 20,
-        flex: 1,
-        width: '90%',
-        backgroundColor: '#F9441E',
-        marginTop: 30,
-        alignSelf: 'center',
-        borderRadius: 10
+    cardReceita:{
+        flexDirection: "row",
+        backgroundColor: "#F85836",
+        width: "90%",
+        alignSelf: "center",
+        marginBottom: 25,
+        borderRadius: 10,
     },
 
-    titulo: {
-        alignSelf: 'center',
-        fontSize: 22,
-        fontWeight: 'bold',
-        color: 'white'
+    fundoImg:{
+        backgroundColor: "#FEAF9F",
+        width: 100,
+        height: 100,
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
     },
+
+    imgReceita:{
+        width: 70,
+        height: 70,
+    },
+
+    receitaInfo:{
+        justifyContent: "center",
+        marginLeft: 10,
+    },
+
+    titulo:{
+        fontWeight: "bold",
+        fontSize: 18,
+        color: "#FFFF",
+    },
+
+    subtitulo:{
+        color: "#FFFF"
+    },
+
 })

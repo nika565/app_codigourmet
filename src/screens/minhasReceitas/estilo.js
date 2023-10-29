@@ -36,6 +36,7 @@ const estilos = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: '#552C23',
+        marginBottom: 20,
     },
 
     imageAdd:{
@@ -49,7 +50,50 @@ const estilos = StyleSheet.create({
         width: 50,
         height: 50,
         marginTop: 560,
-    }
+    },
+
+    // Estilização dos cards da receita
+
+    cardReceita:{
+        flexDirection: "row",
+        backgroundColor: "#F85836",
+        width: "90%",
+        alignSelf: "center",
+        marginBottom: 25,
+        borderRadius: 10,
+    },
+
+    fundoImg:{
+        backgroundColor: "#FEAF9F",
+        width: 100,
+        height: 100,
+
+        alignItems: "center",
+        justifyContent: "center",
+
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
+    },
+
+    imgReceita:{
+        width: 70,
+        height: 70,
+    },
+
+    receitaInfo:{
+        justifyContent: "center",
+        marginLeft: 10,
+    },
+
+    titulo:{
+        fontWeight: "bold",
+        fontSize: 18,
+        color: "#FFFF",
+    },
+
+    subtitulo:{
+        color: "#FFFF"
+    },
 
 });
 

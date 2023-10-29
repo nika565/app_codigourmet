@@ -77,6 +77,7 @@ const estilos = StyleSheet.create({
 
         marginTop: 30,
         alignItems: 'center',
+        justifyContent: 'center',
 
       },
 
@@ -85,7 +86,7 @@ const estilos = StyleSheet.create({
         fontSize: 17,
         fontWeight: 'bold',
         color: '#FFF',
-        marginTop: 7,
+        // marginTop: 7,
       },
 
       containerLink:{

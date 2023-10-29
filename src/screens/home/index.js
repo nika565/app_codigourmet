@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ActivityIndicator, Text, SafeAreaView, TextInput, View, TouchableOpacity, Image, FlatList } from "react-native";
+import { ActivityIndicator, Text, SafeAreaView, TextInput, View, TouchableOpacity, Image, FlatList, ScrollView } from "react-native";
 import { estilos } from "./estilos";
 import pesquisa from '../../services/api/receitas/pesquisa';
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -27,14 +27,16 @@ function TelaHome() {
     }, [carregando]);
 
     return (
-        <View style={[estilos.cor, estilos.tela]}>
-            <View style={estilos.cor}>
+        <SafeAreaView style={[estilos.cor, estilos.tela]}>
+            <ScrollView style={estilos.cor}>
+
                 <View style={estilos.container}>
                     <TextInput
                         placeholder="Encontre uma receita"
                         style={estilos.busca}
                         onChangeText={(texto) => setNomeReceita(texto)}
                     />
+                    
                     <TouchableOpacity
                         style={estilos.btnBusca}
                         onPress={async () => {
@@ -45,27 +47,30 @@ function TelaHome() {
                         <Image style={estilos.imgBusca} source={require('../../../assets/icons/search.png')} />
                     </TouchableOpacity>
                 </View>
+                
                 {carregando ? ( // Exibir uma mensagem de carregamento enquanto os dados estão sendo buscados
                     <ActivityIndicator size="large" color="#FF2D00" />
                 ) : (
-
+                    
                     <FlatList
                         data={dados}
                         keyExtractor={(item) => item._id.toString()}
                         renderItem={({ item }) => (
-                            <View style={estilos.card}>
-                                <Text style={estilos.titulo}>{item.nome}</Text>
-                                <Text>Tempo de preparo: {item.tempo} min</Text>
-                                <Text>Ingredientes: {item.ingredientes}</Text>
-                                <TouchableOpacity><Text>Ver mais</Text></TouchableOpacity>
-                                {/* Adicione aqui outros componentes para exibir mais informações */}
-                            </View>
+                            <TouchableOpacity style={estilos.cardReceita}>
+                                <View style={estilos.fundoImg}>
+                                    <Image style={estilos.imgReceita} source={require('../../../assets/icons/cozinha.png')} />
+                                </View>
+                                <View style={estilos.receitaInfo}>
+                                    <Text style={estilos.titulo}>{item.nome}</Text>
+                                    <Text style={estilos.subtitulo}>{item.tempo} minutos</Text>
+                                </View>
+                            </TouchableOpacity>
                         )}
                     />
 
                 )}
-            </View>
-        </View>
+            </ScrollView>
+        </SafeAreaView>
     );
 }
 

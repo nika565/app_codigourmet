@@ -8,13 +8,8 @@ import minhasReceitas from "../../services/api/minhasReceitas/minhasReceitas";
 
 function TelaMinhasReceitas({ navigation }) {
 
-    const imagePress = () => {
-        navigation.navigate('CriarReceita');
-    };
-
     const [dados, setDados] = useState([]);
     const [carregando, setCarregando] = useState(true);
-    // const [usuario, setUsuario] = useState('');
 
     useEffect(() => {
         async function getData() {
@@ -32,20 +27,18 @@ function TelaMinhasReceitas({ navigation }) {
                     setCarregando(false);
                 }
             }
-
         }
 
         getData();
     }, []);
 
-
-
     return (
         <SafeAreaView style={estilos.tela}>
-            <View style={estilos.tela}>
+            <ScrollView style={estilos.tela}>
                 <View style={estilos.appbarLogin}>
                     <Image style={estilos.navbarLogo} source={require("../../../assets/logo/navbarLogo.png")}></Image>
                 </View>
+
                 <View style={estilos.container}>
                     <Text style={estilos.txt}>Minhas Receitas</Text>
                 </View>
@@ -59,26 +52,33 @@ function TelaMinhasReceitas({ navigation }) {
                             data={dados}
                             keyExtractor={(item) => item._id.toString()}
                             renderItem={({ item }) => (
-                                <View>
-                                    <Text>{item.nome}</Text>
-                                    <Text>Tempo de preparo: {item.tempo} min</Text>
-                                    <Text>Ingredientes: {item.ingredientes}</Text>
-                                    <TouchableOpacity><Text>Ver mais</Text></TouchableOpacity>
-                                    {/* Adicione aqui outros componentes para exibir mais informações */}
-                                </View>
+                                <TouchableOpacity style={estilos.cardReceita} onPress={
+                                    () => {
+                                        console.log(item)
+                                        navigation.navigate("TelaReceita", {
+                                            
+                                            nome: [item.nome],
+                                            ingredientes: item.ingredientes,
+                                            preparo: item.modoPreparo,
+                                            tempo: item.tempo,
+                                        }); 
+                                    }}>
+
+                                    <View style={estilos.fundoImg}>
+                                        <Image style={estilos.imgReceita} source={require('../../../assets/icons/cozinha.png')} />
+                                    </View>
+
+                                    <View style={estilos.receitaInfo}>
+                                        <Text style={estilos.titulo}>{item.nome}</Text>
+                                        <Text style={estilos.subtitulo}>{item.tempo} minutos</Text>
+                                    </View>
+                                </TouchableOpacity>
                             )}
                         />
                     </View>
 
                 )}
-
-                <View style={estilos.imageAdd}>
-                    <TouchableOpacity onPress={imagePress}>
-                        <Image style={estilos.addIcon} source={require("../../../assets/icons/botao_adicionar.png")}></Image>
-                    </TouchableOpacity>
-                </View>
-
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 
