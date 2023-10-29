@@ -1,42 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, TouchableOpacity, View, Text, Image} from "react-native";
+import { SafeAreaView, ScrollView, TouchableOpacity, View, Text, Image, ActivityIndicator, FlatList, Alert } from "react-native";
 
 import estilos from "./estilo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import minhasReceitas from "../../services/api/minhasReceitas/minhasReceitas";
 
-function TelaMinhasReceitas ({ navigation }){
+function TelaMinhasReceitas({ navigation }) {
 
     const imagePress = () => {
         navigation.navigate('CriarReceita');
     };
 
-    const [idCriador, setCriador] = useState('');
-    const [token, setToken] = useState('');
+    const [dados, setDados] = useState([]);
+    const [carregando, setCarregando] = useState(true);
+    // const [usuario, setUsuario] = useState('');
 
     useEffect(() => {
-        async function getData(){
-            const resposta = await AsyncStorage.getItem('dados');
-            const objeto = resposta != null ? JSON.parse(resposta) : '';
+        async function getData() {
+            
+            const dadosReceitas = await minhasReceitas();
+            if (dadosReceitas.status === 'error') {
+                Alert.alert(dadosReceitas.msg)
+            } else {
 
-            setCriador(objeto[0].id);
-            setToken(objeto[1]);
+                if (dadosReceitas.dados.length === 0) {
+                    Alert.alert('Você não tem nenhuma receita cadastrada.', 'Por favor cadastre uma receita!');
+                    navigation.navigate('CriarReceita');
+                } else {
+                    setDados(dadosReceitas.dados);
+                    setCarregando(false);
+                }
+            }
+
         }
 
         getData();
     }, []);
 
-    console.log(idCriador)
-    console.log(token)
 
-    async () => {
-        const dadosReceitas = await minhasReceitas(idCriador, token)
-    }
 
-    return(
+    return (
         <SafeAreaView style={estilos.tela}>
-            <ScrollView style={estilos.tela}>
+            <View style={estilos.tela}>
                 <View style={estilos.appbarLogin}>
                     <Image style={estilos.navbarLogo} source={require("../../../assets/logo/navbarLogo.png")}></Image>
                 </View>
@@ -44,11 +50,26 @@ function TelaMinhasReceitas ({ navigation }){
                     <Text style={estilos.txt}>Minhas Receitas</Text>
                 </View>
 
-                {idCriador && token && (
+                {carregando ? ( // Exibir uma mensagem de carregamento enquanto os dados estão sendo buscados
+                    <ActivityIndicator size="large" color="#FF2D00" />
+                ) : (
+
                     <View>
-                        <Text>{idCriador}</Text>
-                        <Text>{token}</Text>
+                        <FlatList
+                            data={dados}
+                            keyExtractor={(item) => item._id.toString()}
+                            renderItem={({ item }) => (
+                                <View>
+                                    <Text>{item.nome}</Text>
+                                    <Text>Tempo de preparo: {item.tempo} min</Text>
+                                    <Text>Ingredientes: {item.ingredientes}</Text>
+                                    <TouchableOpacity><Text>Ver mais</Text></TouchableOpacity>
+                                    {/* Adicione aqui outros componentes para exibir mais informações */}
+                                </View>
+                            )}
+                        />
                     </View>
+
                 )}
 
                 <View style={estilos.imageAdd}>
@@ -57,10 +78,10 @@ function TelaMinhasReceitas ({ navigation }){
                     </TouchableOpacity>
                 </View>
 
-            </ScrollView>
+            </View>
         </SafeAreaView>
     );
-    
+
 };
 
 export default TelaMinhasReceitas;
