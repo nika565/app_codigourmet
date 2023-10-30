@@ -52,7 +52,7 @@ function TelaReceita( {navigation} ){
 
                         if(receita.status === 'success'){
                             Alert.alert('', receita.msg);
-
+                            navigation.navigate("MinhasReceitas");
                         }else{
                             Alert.alert('', receita.msg);
                         }

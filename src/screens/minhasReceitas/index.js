@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, TouchableOpacity, View, Text, Image, ActivityIndicator, FlatList, Alert } from "react-native";
-
 import estilos from "./estilo";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import minhasReceitas from "../../services/api/minhasReceitas/minhasReceitas";
 
 function TelaMinhasReceitas({ navigation }) {
@@ -56,8 +54,9 @@ function TelaMinhasReceitas({ navigation }) {
                                     () => {
                                         console.log(item)
                                         navigation.navigate("TelaReceita", {
-                                            
-                                            nome: [item.nome],
+                                            local: "minhasReceitas",
+                                            id: item._id,
+                                            nome: item.nome,
                                             ingredientes: item.ingredientes,
                                             preparo: item.modoPreparo,
                                             tempo: item.tempo,

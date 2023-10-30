@@ -5,7 +5,7 @@ import pesquisa from '../../services/api/receitas/pesquisa';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import receitas from "../../services/api/receitas/receitas";
 
-function TelaHome() {
+function TelaHome({ navigation }) {
     const [nomeReceita, setNomeReceita] = useState('');
     const [dados, setDados] = useState('');
     const [carregando, setCarregando] = useState(true);
@@ -56,7 +56,17 @@ function TelaHome() {
                         data={dados}
                         keyExtractor={(item) => item._id.toString()}
                         renderItem={({ item }) => (
-                            <TouchableOpacity style={estilos.cardReceita}>
+                            <TouchableOpacity style={estilos.cardReceita} onPress={
+                                () => {
+                                    navigation.navigate("TelaReceita", {
+                                        local: "home",
+                                        nome: item.nome,
+                                        ingredientes: item.ingredientes,
+                                        preparo: item.modoPreparo,
+                                        tempo: item.tempo,
+                                    })
+                                }
+                            }>
                                 <View style={estilos.fundoImg}>
                                     <Image style={estilos.imgReceita} source={require('../../../assets/icons/cozinha.png')} />
                                 </View>

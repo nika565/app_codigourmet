@@ -1,14 +1,25 @@
 import { url, endpointReceitas } from "../../router/rota";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+async function pegaDados() {
+    const resposta = await AsyncStorage.getItem('dados');
+    const objeto = resposta != null ? JSON.parse(resposta) : '';
+
+    return objeto;
+}
 
 // Função para excluir uma receita
-export default async function excluirReceita(id, token) {
+export default async function excluirReceita(id) {
+    
     try {
+
+        const usuario = await pegaDados();
 
         const requisicao = await fetch(`${url}${endpointReceitas}/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-                'authorization': `Bearer ${token}`
+                'authorization': `Bearer ${usuario[1]}`
             }
         });
 

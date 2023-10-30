@@ -11,8 +11,6 @@ async function pegaDados() {
 }
 
 export default async function minhasReceitas() {
-    // console.log(id);
-    // console.log(token);
 
     try {
 
